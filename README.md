@@ -7,8 +7,10 @@
 存在Negative数据样本不足的问题，但用于本次作业的学习和研究是够了。
 
 ## 关于模型
-1.Haar模型使用了Opencv的实现
-2.Logistic regressio由于没找到合适的Pretrained的模型实现(大部分使用了Logistic Regression方式的模型都为Deep Neuron network),深度网络模型超出了本次作业的范围，因此没有使用。
+- 1.Haar模型使用了Opencv的实现
+  虽然我没有自己训练Haar模型，但是基于Opencv提供的方式，应该可以很方便的训练
+  https://docs.opencv.org/4.x/dc/d88/tutorial_traincascade.html
+- 2.Logistic regressio由于没找到合适的Pretrained的模型实现(大部分使用了Logistic Regression方式的模型都为Deep Neuron network),深度网络模型超出了本次作业的范围，因此没有使用。
   本次作业中使用老师给的数据集做为positive，从网上随机抓了一些图做为Negative 训练了一个Logistic Regression的模型。
   该模型的特征提取采用了lbp pattern。这个训练采用的数据集比较片面（特别是Negative数据集严重不足），因此该模型并不具备实际使用价值，仅可用于本次作业学习使用。
   有时间的话可以找更多的训练数据集，ROC绘制使用的数据集最好与训练用的数据集分开，能得到更客观的实验数据。
@@ -20,8 +22,8 @@ https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html
 - Haar模型的绘制
 ```python Haar.py ```
 - logistic regression 模型的绘制
-```python trainlogisticmodel.py```
-```python logistic_regression.py```
+- - ```python trainlogisticmodel.py```
+- - ```python logistic_regression.py```
 
 ## 一些有用的资源
 - https://www.evidentlyai.com/classification-metrics/explain-roc-curve#roc-curve-in-python

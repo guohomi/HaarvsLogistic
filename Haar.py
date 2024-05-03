@@ -3,6 +3,7 @@ from os import listdir
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
+from tqdm import tqdm
 
 face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 t_count = 0
@@ -10,7 +11,9 @@ f_count = 0
 total_count = 0
 y_true = []
 y_score = []
-for f in listdir("Caltech_WebFaces"):
+print('Processing positives:')
+positives = listdir("Caltech_WebFaces")
+for f in tqdm(positives):
     img = cv2.imread('Caltech_WebFaces/' + f)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces_result = face_detector.detectMultiScale(gray, 1.3, 5)
@@ -22,8 +25,10 @@ for f in listdir("Caltech_WebFaces"):
         y_score.append(0)
     total_count = total_count + 1
     y_true.append(1)
-    print('File name:' + f + '. Face count: ' + str(len(faces_result)))
-for f in listdir("negative"):
+    #print('File name:' + f + '. Face count: ' + str(len(faces_result)))
+print('Processing negatives:')
+negatives = listdir("negative")
+for f in tqdm(negatives):
     img = cv2.imread('negative/' + f)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces_result = face_detector.detectMultiScale(gray, 1.3, 5)
@@ -35,7 +40,7 @@ for f in listdir("negative"):
         y_score.append(0)
     total_count = total_count + 1
     y_true.append(0)
-    print('File name:' + f + '. Face count: ' + str(len(faces_result)))
+    #print('File name:' + f + '. Face count: ' + str(len(faces_result)))
 #create ROC curve
 fpr, tpr, thresholds = roc_curve(y_true, y_score)
 roc_auc = auc(fpr, tpr)
