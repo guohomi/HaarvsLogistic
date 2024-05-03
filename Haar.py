@@ -48,5 +48,3 @@ plt.ylabel('True Positive Rate or (Sensitivity)')
 plt.title('Receiver Operating Characteristic')
 plt.legend(loc="lower right")
 plt.show()
-
-cv2.destroyAllWindows()
