@@ -5,13 +5,9 @@ from sklearn.metrics import roc_curve
 from sklearn.metrics import auc
 
 face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-tpr = []
-fpr = []
 t_count = 0
 f_count = 0
 total_count = 0
-tpr.append(0)
-fpr.append(0)
 y_true = []
 y_score = []
 for f in listdir("Caltech_WebFaces"):
@@ -26,10 +22,6 @@ for f in listdir("Caltech_WebFaces"):
         y_score.append(0)
     total_count = total_count + 1
     y_true.append(1)
-    if total_count%100 == 0:
-        tpr.append(t_count/total_count)
-        #fpr.append(f_count/f_count)
-        fpr.append(0 / 7093)
     print('File name:' + f + '. Face count: ' + str(len(faces_result)))
 for f in listdir("negative"):
     img = cv2.imread('negative/' + f)
@@ -43,10 +35,6 @@ for f in listdir("negative"):
         y_score.append(0)
     total_count = total_count + 1
     y_true.append(0)
-    if total_count % 100 == 0:
-        tpr.append(t_count / total_count)
-        # fpr.append(f_count/f_count)
-        fpr.append(0 / 7093)
     print('File name:' + f + '. Face count: ' + str(len(faces_result)))
 #create ROC curve
 fpr, tpr, thresholds = roc_curve(y_true, y_score)
