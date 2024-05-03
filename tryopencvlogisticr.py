@@ -1,6 +1,4 @@
 from cv2 import ml
-from sklearn.datasets import make_blobs
-from sklearn import model_selection as ms
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from numpy import float32
 from matplotlib.pyplot import show

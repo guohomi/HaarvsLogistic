@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 from os import listdir
 import matplotlib.pyplot as plt
