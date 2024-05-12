@@ -25,7 +25,7 @@ for f in tqdm(positives):
         y_score.append(0)
     total_count = total_count + 1
     y_true.append(1)
-    #print('File name:' + f + '. Face count: ' + str(len(faces_result)))
+    ###print('File name:' + f + '. Face count: ' + str(len(faces_result)))
 print('Processing negatives:')
 negatives = listdir("negative")
 for f in tqdm(negatives):
